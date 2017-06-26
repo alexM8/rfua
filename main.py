@@ -31,7 +31,7 @@ def FormTable(dict, header_colour = "active", result = ''):
         for element in dict[card].items():
             test = element[1]
             if element[0] in var:
-                test = dateutil.parser.parse(test).ctime()
+                test = dateutil.parser.parse(test).date().isoformat()
             result += "<td class = \"active\">" + str(test) + "</td>"
         result += "</tr><tr class = \"active\">"
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
