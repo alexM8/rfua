@@ -18,8 +18,7 @@ def root():
 def header():
     return render_template("header.html", location = location)
 
-def FormTable(dict, header_colour = "active"):
-    result = "<tr class = \"" + header_colour + "\">"
+def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
         for element in dict[0].items():
             result += "<th class = \"" + header_colour + "\">" + str(element[0]) + "</th>"
@@ -29,8 +28,7 @@ def FormTable(dict, header_colour = "active"):
         for element in dict[card].items():
             result += "<td class = \"active\">" + str(element[1]) + "</td>"
         result += "</tr><tr class = \"active\">"
-    result += "</tr>"
-    result = "<table class = \"table table-bordered\"" + result + "</table>"
+    result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
     return result
 
 @app.route(location + "/accounts")
