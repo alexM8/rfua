@@ -24,13 +24,14 @@ def header():
 def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
         for element in dict[0].items():
-            result += "<th class = \"" + header_colour + "\">" + str(element[0]) + "</th>"
+            test = element[1]
+            if element[0] in var:
+                test = dateutil.parser.parse(test).ctime()
+            result += "<th class = \"" + header_colour + "\">" + str(test) + "</th>"
         break
     result += "</tr><tr class = \"active\">"
     for card in range(0, len(dict)):
         for element in dict[card].items():
-            if element[0] in var:
-                element[1] = dateutil.parser.parse(element[1]).ctime()
             result += "<td class = \"active\">" + str(element[1]) + "</td>"
         result += "</tr><tr class = \"active\">"
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
