@@ -2,10 +2,10 @@
 from flask import Flask, current_app
 from flask.templating import render_template
 from rfua_api.main import session
+from config import location
 import json
 
 app = Flask(__name__)
-location = ""
 
 @app.route(location + "/favicon.ico")
 def favicon():
