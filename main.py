@@ -45,9 +45,7 @@ def accounts():
     for field in Extrafields:
         del AccountsDict[field]
 
-    accounts = []
-    accounts.append(AccountsDict)
-    result = header() + render_template("body.html", dict = FormTable(accounts, "success"))
+    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success"))
     return result
 
 @app.route(location + "/cards")
@@ -55,34 +53,34 @@ def cards():
     CardsDict = session.Cards.json()['Result']
 
     for x in range(0, len(CardsDict)):
-        CardsDict[x]['AvailableBalance'] /= float(100)
+        CardsDict[x]['AvailableBalance'] /= 100
         Extrafields = "ProductAlias", "UniqueKey"
         for field in Extrafields:
             del CardsDict[x][field]
 
-    return header() + render_template("body.html", dict = FormTable(CardsDict, "success"))
+    return header() + render_template("body.html", table = FormTable(CardsDict, "success"))
 
 @app.route(location + "/holds")
 def holds():
     HoldsDict = session.Holds.json()['Result']['Items']
 
     for x in range(0, len(HoldsDict)):
-        HoldsDict[x]['Amount'] /= float(100)
+        HoldsDict[x]['Amount'] /= 100
         del HoldsDict[x]["HoldUniqueKey"]
 
-    return header() + render_template("body.html", dict = FormTable(HoldsDict, "success"))
+    return header() + render_template("body.html", table = FormTable(HoldsDict, "success"))
 
 @app.route(location + "/history")
 def history():
     HistoryDict = session.History.json()['Result']['Items']
 
     for x in range(0, len(HistoryDict)):
-        HistoryDict[x]['OriginalAmount'] /= float(100)
+        HistoryDict[x]['OriginalAmount'] /= 100
         Extrafields = "OperationUniqueKey", "ChannelType"
         for field in Extrafields:
             del HistoryDict[x][field]
 
-    return header() + render_template("body.html", dict = FormTable(HistoryDict, "success"))
+    return header() + render_template("body.html", table = FormTable(HistoryDict, "success"))
 
 @app.route(location + "/refresh")
 def refresh():
@@ -95,13 +93,13 @@ def refresh():
 @app.route(location + "/log")
 def log():
     session.log = json.loads(json.dumps(session.log, sort_keys = True))
-    return header() + render_template("body.html", dict = FormTable(session.log, "danger"))
+    return header() + render_template("body.html", table = FormTable(session.log, "danger"))
 
 @app.route(location + "/devices")
 def devices():
     DevicesDict = session.Info.json()['Result']['clientData']['subscriptions']
 
-    return header() + render_template("body.html", dict=FormTable(DevicesDict, "success"))
+    return header() + render_template("body.html", table = FormTable(DevicesDict, "success"))
 
 @app.route(location + "/info")
 def info():
@@ -114,4 +112,4 @@ def info():
     info = []
     info.append(InfoDict)
 
-    return header() + render_template("body.html", dict=FormTable(info, "success"))
+    return header() + render_template("body.html", table = FormTable(info, "success"))
