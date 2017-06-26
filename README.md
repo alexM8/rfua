@@ -2,7 +2,13 @@
 This is a web interface for rfua_api. Based on flask web framework
 
 # How To Use
-Arter cloning this repository, go to ```rfua/rfua_api``` folder and create file ```credentials.py```. You can find description in ```rfua_api```'s ```README.md```.
+As I said, this web interface is build on flask framework.
+
+If you don't have it, instll via ```pip3 install flask```
+
+Arter cloning this repository, go to ```rfua/rfua_api``` folder and create file ```credentials.py```.
+
+You can find description in ```rfua_api```'s ```README.md```.
 
 To launch the application, issue this command in ```rfua``` root:
 
