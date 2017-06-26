@@ -3,10 +3,9 @@ from flask import Flask, current_app
 from flask.templating import render_template
 from rfua_api.main import session
 from config import location
-import dateutil.parser
+import config
+from dateutil.parser import parse
 import json
-
-var = ['PasswordExpirationDate', 'LastChangeOfBalance', 'BlockDate', 'OperationDate', 'BookingDate', 'SubscriptionDate']
 
 app = Flask(__name__)
 
@@ -30,8 +29,8 @@ def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
         for element in dict[card].items():
             test = element[1]
-            if element[0] in var:
-                test = dateutil.parser.parse(test).date().isoformat()
+            if element[0] in config.DataFields:
+                test = parse(test).date().isoformat()
             result += "<td class = \"active\">" + str(test) + "</td>"
         result += "</tr><tr class = \"active\">"
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
@@ -45,7 +44,7 @@ def accounts():
     AccountsDict['Balance'] /= 100
     AccountsDict['AvailableBalance'] /= 100
 
-    Extrafields = "ProductName", "ProductAlias", "UniqueKey", "AccountDescription", "NonReducableBalance"
+    Extrafields = "ProductName", "ProductAlias", "UniqueKey", "AccountDescription", "NonReducableBalance", "Balance"
     for field in Extrafields:
         del AccountsDict[field]
 
@@ -109,7 +108,8 @@ def devices():
 def info():
     InfoDict = session.Info.json()['Result']['clientData']
 
-    ExtraFields = "ResidentialStatus", "FunctionPackage", "ChannelStatus", "subscriptions"
+    ExtraFields = "ResidentialStatus", "FunctionPackage", "ChannelStatus",\
+                  "subscriptions", "AuthenticationToken", "Birthday",
     for fields in ExtraFields:
         del InfoDict[fields]
 
