@@ -1,4 +1,4 @@
-#!/usr/bin/python3.4
+#!/usr/bin/env python3
 from flask import Flask, current_app
 from flask.templating import render_template
 from rfua_api.main import session
