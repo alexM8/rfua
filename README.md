@@ -1,6 +1,6 @@
 # What Is This
 This is a web interface for rfua_api. Based on flask web framework
-![alt text](https://tkachuk.pp.ua/rfua.png)
+![alt tag](https://tkachuk.pp.ua/rfua.png)
 
 # How To Use
 As I said, this web interface is build on flask framework.
