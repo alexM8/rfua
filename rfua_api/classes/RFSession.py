@@ -5,12 +5,11 @@ Not every request is served correcty
 That's why every request has for loop with retry count
 '''
 import requests, json
-from .. import config
-from .. import credentials
+from .. import config, credentials
 
 
 class RFSession():
-    def __init__(self, config):
+    def __init__(self):
         self.log = []
         self.LogIn()
         self.refreshCards()
