@@ -29,7 +29,7 @@ class RFSession():
         LogEntry = request.json()
         LogEntry['Destination'] = request.request.url
         LogEntry['HTTPResponseCode'] = request.status_code
-        LogEntry['ElapsedSeconds'] = request.elapsed.seconds
+        LogEntry['TotalSeconds'] = request.elapsed.total_seconds()
         Extrafields = 'Result', 'ShowAlert', 'AlertMessage'
         for field in Extrafields:
             del LogEntry[field]
