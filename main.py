@@ -1,7 +1,7 @@
 #!/usr/bin/python3.4
 from flask import Flask, current_app
 from flask.templating import render_template
-from rfua_api_client.main import session
+from rfua_api.main import session
 import json
 
 app = Flask(__name__)
