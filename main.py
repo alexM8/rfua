@@ -3,7 +3,10 @@ from flask import Flask, current_app
 from flask.templating import render_template
 from rfua_api.main import session
 from config import location
+import dateutil.parser
 import json
+
+var = ['PasswordExpirationDate', 'LastChangeOfBalance', 'BlockDate', 'OperationDate', 'BookingDate', 'SubscriptionDate']
 
 app = Flask(__name__)
 
@@ -26,6 +29,8 @@ def FormTable(dict, header_colour = "active", result = ''):
     result += "</tr><tr class = \"active\">"
     for card in range(0, len(dict)):
         for element in dict[card].items():
+            if element[0] in var:
+                element[1] = dateutil.parser.parse(element[1]).ctime()
             result += "<td class = \"active\">" + str(element[1]) + "</td>"
         result += "</tr><tr class = \"active\">"
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
