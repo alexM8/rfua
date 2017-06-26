@@ -5,7 +5,7 @@ from rfua_api_client.main import session
 import json
 
 app = Flask(__name__)
-location = "/ansible"
+location = ""
 
 @app.route(location + "/favicon.ico")
 def favicon():
