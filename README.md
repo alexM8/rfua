@@ -16,11 +16,11 @@ string = {"Login":"LOGIN_STRING","Password":"PASSWORD_STRING"}
 4. Go to ```http://localhost:5000``` in your web browser
 
 # How API Works
-1. Launch ```python3``` shell in the API directory and issue
+1. Launch ```python3``` shell in root and issue
 ```
-import main
+import rfua_api.main as api
 ```
-2. New object ```main.session``` will be created
+2. New object ```api.session``` will be created
 3. Object initialization creates session with RF UA API and fetches all availible info
 4. Data is accessible from these objects:
 	- main.session.Info
