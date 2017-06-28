@@ -12,9 +12,8 @@ https://online.aval.ua/bfo/channel/web/loginframe.jsp
 string = {"Login":"LOGIN_STRING","Password":"PASSWORD_STRING"}
 ```
 2. The project is build on flask framework. If you don't have it, install via ```pip3 install flask```.
-3. Configure the API first.
-4. Run ```FLASK_APP=main.py flask run --host=0.0.0.0``` in root folder
-5. Go to ```http://localhost:5000``` in your web browser
+3. Run ```FLASK_APP=main.py flask run --host=0.0.0.0``` in root folder
+4. Go to ```http://localhost:5000``` in your web browser
 
 # How API Works
 1. Launch ```python3``` shell in the API directory and issue
