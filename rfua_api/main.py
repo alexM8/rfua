@@ -6,5 +6,4 @@ try:
     session = RFSession()
 
 except Exception as e:
-    print (session.log)
     traceback.print_exc()
