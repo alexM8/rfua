@@ -10,7 +10,8 @@ from .. import config, credentials
 
 class RFSession():
     def __init__(self):
-        self.log = []
+        self.LogCounter = 0
+        self.Log = []
         self.LogIn()
         self.refreshCards()
         self.refreshAccounts()
@@ -25,18 +26,19 @@ class RFSession():
         else: result = None
         return result
 
-    def Log(self, request):
+    def writeLog(self, request):
+        self.LogCounter += 1
         LogEntry = request.json()
-        LogEntry['Destination'] = request.request.url
-        LogEntry['HTTPResponseCode'] = request.status_code
+        LogEntry['№'] = self.LogCounter
         LogEntry['TotalSeconds'] = request.elapsed.total_seconds()
+        LogEntry['Destination'] = request.request.url
         Extrafields = 'Result', 'ShowAlert', 'AlertMessage'
         for field in Extrafields:
             del LogEntry[field]
-        self.log.append(LogEntry)
+        self.Log.append(LogEntry)
 
     def CheckForVaidResponse(self, result):
-        self.Log(result)
+        self.writeLog(result)
         if result.json()['ResponseCode'] == '000':
             return True
         else:
@@ -54,8 +56,8 @@ class RFSession():
             self.Cards = self.makeRFRequest('get', config.Url + "CardAccountList", cookies = self.cookies)
             if self.CheckForVaidResponse(self.Cards):
                 break
-            if self.Cards.json()["Result"] == None:
-                self.LogIn()
+        if self.Cards.json()["Result"] == None:
+            self.LogIn()
         self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
 
     def refreshAccounts(self):

@@ -95,8 +95,8 @@ def refresh():
 
 @app.route(location + "/log")
 def log():
-    session.log = json.loads(json.dumps(session.log, sort_keys = True))
-    return header() + render_template("body.html", table = FormTable(session.log, "danger"))
+    session.Log = json.loads(json.dumps(session.Log, sort_keys = True))
+    return header() + render_template("body.html", table = FormTable(session.Log, "danger"))
 
 @app.route(location + "/devices")
 def devices():
