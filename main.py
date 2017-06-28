@@ -18,7 +18,8 @@ def root():
     return header()
 
 def header():
-    return render_template("header.html", location = location)
+    return render_template("header.html", location = location,
+                           username = session.Info.json()['Result']['clientData']['Name'])
 
 def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
