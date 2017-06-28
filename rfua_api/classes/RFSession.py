@@ -54,6 +54,8 @@ class RFSession():
             self.Cards = self.makeRFRequest('get', config.Url + "CardAccountList", cookies = self.cookies)
             if self.CheckForVaidResponse(self.Cards):
                 break
+            if self.Cards.json()["Result"] == None:
+                self.LogIn()
         self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
 
     def refreshAccounts(self):
