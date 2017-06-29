@@ -55,10 +55,10 @@ class RFSession():
         for i in range(0, config.Timeout):
             self.Cards = self.makeRFRequest('get', config.Url + "CardAccountList", cookies = self.cookies)
             if self.CheckForVaidResponse(self.Cards):
+                self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
                 break
-            if i == 7:
+            if i == config.Timeout - 1:
                 self.LogIn()
-        self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
 
     def refreshAccounts(self):
         for i in range(0, config.Timeout):
