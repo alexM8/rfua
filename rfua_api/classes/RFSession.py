@@ -34,7 +34,10 @@ class RFSession():
         LogEntry['Destination'] = request.request.url
         Extrafields = 'Result', 'ShowAlert', 'AlertMessage'
         for field in Extrafields:
-            del LogEntry[field]
+            try:
+                del LogEntry[field]
+            except:
+                pass
         self.Log.append(LogEntry)
 
     def CheckForVaidResponse(self, result):
