@@ -6,12 +6,11 @@ That's why every request has for loop with retry count
 '''
 import requests, json
 from .. import config, credentials
+from ..functions import logger
 
 
 class RFSession():
     def __init__(self):
-        self.LogCounter = 0
-        self.Log = []
         self.LogIn()
         self.refreshCards()
         self.refreshAccounts()
@@ -26,22 +25,8 @@ class RFSession():
         else: result = None
         return result
 
-    def writeLog(self, request):
-        self.LogCounter += 1
-        LogEntry = request.json()
-        LogEntry['№'] = self.LogCounter
-        LogEntry['TotalSeconds'] = request.elapsed.total_seconds()
-        LogEntry['Destination'] = request.request.url
-        Extrafields = 'Result', 'ShowAlert', 'AlertMessage'
-        for field in Extrafields:
-            try:
-                del LogEntry[field]
-            except:
-                pass
-        self.Log.append(LogEntry)
-
     def CheckForVaidResponse(self, result):
-        self.writeLog(result)
+        logger.writeLog(result)
         if result.json()['ResponseCode'] == '000':
             return True
         else:
@@ -51,33 +36,38 @@ class RFSession():
         for i in range(0, config.Timeout):
             self.Info = self.makeRFRequest('post', config.LoginUrl + "LogOn")
             if self.CheckForVaidResponse(self.Info):
-                break
-        self.cookies = self.Info.cookies.get_dict()
+                self.cookies = self.Info.cookies.get_dict()
+                return True
+        return False
 
     def refreshCards(self):
         for i in range(0, config.Timeout):
             self.Cards = self.makeRFRequest('get', config.Url + "CardAccountList", cookies = self.cookies)
             if self.CheckForVaidResponse(self.Cards):
                 self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
-                break
+                return True
+        return False
 
     def refreshAccounts(self):
         for i in range(0, config.Timeout):
             self.Accounts = self.makeRFRequest('get', config.Url + "DebitCardAccountData",
                                                cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.Accounts):
-                break
+                return True
+        return False
 
     def refreshHolds(self):
         for i in range(0, config.Timeout):
             self.Holds = self.makeRFRequest('get', config.Url + "HoldList", cookies = self.cookies,
                                                params = self.params)
             if self.CheckForVaidResponse(self.Holds):
-                break
+                return True
+        return False
 
     def refreshHistory(self):
         for i in range(0, config.Timeout):
             self.History = self.makeRFRequest('get', config.Url + "ExecutedCardOperationList",
                                               cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.History):
-                break
+                return True
+        return False

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 from flask import Flask, current_app
 from flask.templating import render_template
-from rfua_api.main import session
+from rfua_api.main import *
+from rfua_api.functions import logger
 from config import location
 import config
 from dateutil.parser import parse
@@ -100,8 +101,8 @@ def refresh():
 
 @app.route(location + "/log")
 def log():
-    session.Log = json.loads(json.dumps(session.Log, sort_keys = True))
-    return header() + render_template("body.html", table = FormTable(session.Log, "danger"))
+    Log = json.loads(json.dumps(logger.getLog(), sort_keys = True))
+    return header() + render_template("body.html", table = FormTable(Log, "danger"))
 
 @app.route(location + "/devices")
 def devices():
