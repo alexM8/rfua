@@ -81,9 +81,3 @@ class RFSession():
                                               cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.History):
                 break
-
-    def __del__(self):
-        for i in range(0, config.Timeout):
-            self.LogOff = self.makeRFRequest('post', config.LoginUrl + "LogOff", cookies = self.cookies)
-            if self.CheckForVaidResponse(self.LogOff):
-                break
