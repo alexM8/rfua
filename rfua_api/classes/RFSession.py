@@ -62,6 +62,7 @@ class RFSession():
                 break
             if i == config.Timeout - 1:
                 self.LogIn()
+                self.refreshCards()
 
     def refreshAccounts(self):
         for i in range(0, config.Timeout):
