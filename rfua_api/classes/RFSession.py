@@ -61,8 +61,7 @@ class RFSession():
                 self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
                 break
             if i == config.Timeout - 1:
-                self.LogIn()
-                self.refreshCards()
+                self.__init__()
 
     def refreshAccounts(self):
         for i in range(0, config.Timeout):
