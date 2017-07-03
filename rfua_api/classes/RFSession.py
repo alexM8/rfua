@@ -60,8 +60,6 @@ class RFSession():
             if self.CheckForVaidResponse(self.Cards):
                 self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
                 break
-            if i == config.Timeout - 1:
-                self.__init__()
 
     def refreshAccounts(self):
         for i in range(0, config.Timeout):

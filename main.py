@@ -88,11 +88,15 @@ def history():
 
 @app.route(location + "/refresh")
 def refresh():
-    session.refreshHistory()
-    session.refreshHolds()
-    session.refreshCards()
-    session.refreshAccounts()
-    return "<script> window.history.back(); </script>"
+    try:
+        session.refreshHistory()
+        session.refreshHolds()
+        session.refreshCards()
+        session.refreshAccounts()
+        return "<script> window.history.back(); </script>"
+    except:
+        session.__init__()
+        return "<script> window.history.back(); </script>"
 
 @app.route(location + "/log")
 def log():
