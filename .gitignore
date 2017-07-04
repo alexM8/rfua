@@ -97,3 +97,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# the file with credentials for rfua_api
+rfua_api/credentials.py
