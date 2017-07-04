@@ -37,7 +37,7 @@ class RFSession():
             self.Info = self.makeRFRequest('post', config.LoginUrl + "LogOn")
             if self.CheckForVaidResponse(self.Info):
                 self.cookies = self.Info.cookies.get_dict()
-                break
+                return True
         raise Exception('LogIn Failed')
 
     def refreshCards(self):
@@ -45,7 +45,7 @@ class RFSession():
             self.Cards = self.makeRFRequest('get', config.Url + "CardAccountList", cookies = self.cookies)
             if self.CheckForVaidResponse(self.Cards):
                 self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
-                break
+                return True
         raise Exception('Cards Fetching Failed')
 
     def refreshAccounts(self):
@@ -53,7 +53,7 @@ class RFSession():
             self.Accounts = self.makeRFRequest('get', config.Url + "DebitCardAccountData",
                                                cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.Accounts):
-                break
+                return True
         raise Exception('Accounts Fetching Failed')
 
     def refreshHolds(self):
@@ -61,7 +61,7 @@ class RFSession():
             self.Holds = self.makeRFRequest('get', config.Url + "HoldList", cookies = self.cookies,
                                                params = self.params)
             if self.CheckForVaidResponse(self.Holds):
-                break
+                return True
         raise Exception('Holds Fetching Failed')
 
     def refreshHistory(self):
@@ -69,5 +69,5 @@ class RFSession():
             self.History = self.makeRFRequest('get', config.Url + "ExecutedCardOperationList",
                                               cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.History):
-                break
+                return True
         raise Exception('History Fetching Failed')
