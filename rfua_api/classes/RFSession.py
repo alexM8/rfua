@@ -37,37 +37,37 @@ class RFSession():
             self.Info = self.makeRFRequest('post', config.LoginUrl + "LogOn")
             if self.CheckForVaidResponse(self.Info):
                 self.cookies = self.Info.cookies.get_dict()
-                return True
-        return False
+                break
+        raise Exception('LogIn Failed')
 
     def refreshCards(self):
         for i in range(0, config.Timeout):
             self.Cards = self.makeRFRequest('get', config.Url + "CardAccountList", cookies = self.cookies)
             if self.CheckForVaidResponse(self.Cards):
                 self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
-                return True
-        return False
+                break
+        raise Exception('Cards Fetching Failed')
 
     def refreshAccounts(self):
         for i in range(0, config.Timeout):
             self.Accounts = self.makeRFRequest('get', config.Url + "DebitCardAccountData",
                                                cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.Accounts):
-                return True
-        return False
+                break
+        raise Exception('Accounts Fetching Failed')
 
     def refreshHolds(self):
         for i in range(0, config.Timeout):
             self.Holds = self.makeRFRequest('get', config.Url + "HoldList", cookies = self.cookies,
                                                params = self.params)
             if self.CheckForVaidResponse(self.Holds):
-                return True
-        return False
+                break
+        raise Exception('Holds Fetching Failed')
 
     def refreshHistory(self):
         for i in range(0, config.Timeout):
             self.History = self.makeRFRequest('get', config.Url + "ExecutedCardOperationList",
                                               cookies = self.cookies, params = self.params)
             if self.CheckForVaidResponse(self.History):
-                return True
-        return False
+                break
+        raise Exception('History Fetching Failed')
