@@ -14,15 +14,11 @@ def favicon():
     return current_app.send_static_file("favicon.ico")
 
 @app.route(config.location + "/")
-def root():
-    return header()
+def header():
+    return render_template("header.html", location = config.location)
 
 def footer():
     return render_template("footer.html")
-
-def header():
-    return render_template("header.html", location = config.location,
-                           username = session.Info.json()['Result']['clientData']['Name'])
 
 def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
@@ -41,7 +37,7 @@ def FormTable(dict, header_colour = "active", result = ''):
     return result
 
 @app.route(config.location + "/main")
-def accounts():
+def main():
     CardsDict = session.Cards.json()['Result']
     AccountsDict = session.Accounts.json()['Result']
     HoldsDict = session.Holds.json()['Result']['Items']
@@ -89,40 +85,6 @@ def accounts():
              footer()
     return result
 
-@app.route(config.location + "/cards")
-def cards():
-    CardsDict = session.Cards.json()['Result']
-
-    for x in range(0, len(CardsDict)):
-        CardsDict[x]['AvailableBalance'] /= 100
-        Extrafields = "ProductAlias", "UniqueKey"
-        for field in Extrafields:
-            del CardsDict[x][field]
-
-    return header() + render_template("body.html", table = FormTable(CardsDict, "success")) + footer()
-
-@app.route(config.location + "/holds")
-def holds():
-    HoldsDict = session.Holds.json()['Result']['Items']
-
-    for x in range(0, len(HoldsDict)):
-        HoldsDict[x]['Amount'] /= 100
-        del HoldsDict[x]["HoldUniqueKey"]
-
-    return header() + render_template("body.html", table = FormTable(HoldsDict, "success")) + footer()
-
-@app.route(config.location + "/history")
-def history():
-    HistoryDict = session.History.json()['Result']['Items']
-
-    for x in range(0, len(HistoryDict)):
-        HistoryDict[x]['OriginalAmount'] /= 100
-        Extrafields = "OperationUniqueKey", "ChannelType"
-        for field in Extrafields:
-            del HistoryDict[x][field]
-
-    return header() + render_template("body.html", table = FormTable(HistoryDict, "success")) + footer()
-
 @app.route(config.location + "/refresh")
 def refresh():
     try:
@@ -146,16 +108,53 @@ def devices():
 
     return header() + render_template("body.html", table = FormTable(DevicesDict, "success")) + footer()
 
-@app.route(config.location + "/info")
-def info():
-    InfoDict = session.Info.json()['Result']['clientData']
+# @app.route(config.location + "/cards")
+# def cards():
+#     CardsDict = session.Cards.json()['Result']
+#
+#     for x in range(0, len(CardsDict)):
+#         CardsDict[x]['AvailableBalance'] /= 100
+#         Extrafields = "ProductAlias", "UniqueKey"
+#         for field in Extrafields:
+#             del CardsDict[x][field]
+#
+#     return header() + render_template("body.html", table = FormTable(CardsDict, "success")) + footer()
+#
+# @app.route(config.location + "/holds")
+# def holds():
+#     HoldsDict = session.Holds.json()['Result']['Items']
+#
+#     for x in range(0, len(HoldsDict)):
+#         HoldsDict[x]['Amount'] /= 100
+#         del HoldsDict[x]["HoldUniqueKey"]
+#
+#     return header() + render_template("body.html", table = FormTable(HoldsDict, "success")) + footer()
+#
+# @app.route(config.location + "/history")
+# def history():
+#     HistoryDict = session.History.json()['Result']['Items']
+#
+#     for x in range(0, len(HistoryDict)):
+#         HistoryDict[x]['OriginalAmount'] /= 100
+#         Extrafields = "OperationUniqueKey", "ChannelType"
+#         for field in Extrafields:
+#             del HistoryDict[x][field]
+#
+#     return header() + render_template("body.html", table = FormTable(HistoryDict, "success")) + footer()
+#
+# @app.route(config.location + "/info")
+# def info():
+#     InfoDict = session.Info.json()['Result']['clientData']
+#
+#     ExtraFields = "ResidentialStatus", "FunctionPackage", "ChannelStatus",\
+#                   "subscriptions", "AuthenticationToken", "Birthday",
+#     for fields in ExtraFields:
+#         del InfoDict[fields]
+#
+#     info = []
+#     info.append(InfoDict)
+#
+#     return header() + render_template("body.html", table = FormTable(info, "success")) + footer()
 
-    ExtraFields = "ResidentialStatus", "FunctionPackage", "ChannelStatus",\
-                  "subscriptions", "AuthenticationToken", "Birthday",
-    for fields in ExtraFields:
-        del InfoDict[fields]
 
-    info = []
-    info.append(InfoDict)
 
-    return header() + render_template("body.html", table = FormTable(info, "success")) + footer()
