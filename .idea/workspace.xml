@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fd4fc6f7-8d4e-43fd-84db-8cb4a891453e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/body.html" afterPath="$PROJECT_DIR$/templates/body.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="body.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/body.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            <state relative-caret-position="0">
+              <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -590,7 +589,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499783523302</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Table names fixes">
+      <created>1499783928487</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1499783928487</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -621,7 +627,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More informative timing" />
     <MESSAGE value="Removed bootstrap.js" />
     <MESSAGE value="Code optimization" />
     <MESSAGE value="table formation shorter" />
@@ -646,7 +651,8 @@
     <MESSAGE value="Name for each table" />
     <MESSAGE value="separating pages" />
     <MESSAGE value="Header fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Header fixes" />
+    <MESSAGE value="Table names fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Table names fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1059,14 +1065,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/footer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1356">
@@ -1074,6 +1072,14 @@
           <folding>
             <element signature="e#23#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/footer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1087,8 +1093,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/body.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="16" lean-forward="true" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        <state relative-caret-position="0">
+          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
           <folding />
         </state>
       </provider>
