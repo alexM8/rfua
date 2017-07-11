@@ -24,8 +24,7 @@ def header():
     return render_template("header.html", location = config.location,
                            username = session.Info.json()['Result']['clientData']['Name'])
 
-def FormTable(dict, header_colour = "active", result = '', name = None):
-    result += "<h2>" + name + "</h2>"
+def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
         for element in dict[0].items():
             result += "<th class = \"" + header_colour + "\">" + str(element[0]) + "</th>"
@@ -41,19 +40,53 @@ def FormTable(dict, header_colour = "active", result = '', name = None):
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
     return result
 
-@app.route(config.location + "/accounts")
+@app.route(config.location + "/main")
 def accounts():
+    CardsDict = session.Cards.json()['Result']
     AccountsDict = session.Accounts.json()['Result']
+    HoldsDict = session.Holds.json()['Result']['Items']
+    HistoryDict = session.History.json()['Result']['Items']
+    InfoDict = session.Info.json()['Result']['clientData']
+
+    ExtraFields = "ResidentialStatus", "FunctionPackage", "ChannelStatus", \
+                  "subscriptions", "AuthenticationToken", "Birthday",
+    for fields in ExtraFields:
+        del InfoDict[fields]
+
+    for x in range(0, len(HistoryDict)):
+        HistoryDict[x]['OriginalAmount'] /= 100
+        Extrafields = "OperationUniqueKey", "ChannelType"
+        for field in Extrafields:
+            del HistoryDict[x][field]
+
+    for x in range(0, len(HoldsDict)):
+        HoldsDict[x]['Amount'] /= 100
+        del HoldsDict[x]["HoldUniqueKey"]
+
+    for x in range(0, len(CardsDict)):
+        CardsDict[x]['AvailableBalance'] /= 100
+        Extrafields = "ProductAlias", "UniqueKey"
+        for field in Extrafields:
+            del CardsDict[x][field]
 
     AccountsDict['UAHBalance'] /= 100
     AccountsDict['Balance'] /= 100
     AccountsDict['AvailableBalance'] /= 100
 
+    info = []
+    info.append(InfoDict)
+
     Extrafields = "ProductName", "ProductAlias", "UniqueKey", "AccountDescription", "NonReducableBalance", "Balance"
     for field in Extrafields:
         del AccountsDict[field]
 
-    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success", name = "Accounts")) + footer()
+    result = header() + \
+             render_template("body.html", table = FormTable(info, "success")) + \
+             render_template("body.html", table = FormTable([AccountsDict], "success")) + \
+             render_template("body.html", table = FormTable(CardsDict, "success")) + \
+             render_template("body.html", table = FormTable(HoldsDict, "success")) + \
+             render_template("body.html", table = FormTable(HistoryDict, "success")) + \
+             footer()
     return result
 
 @app.route(config.location + "/cards")
