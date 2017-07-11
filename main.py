@@ -8,7 +8,7 @@ app = f.Flask(__name__)
 
 @app.route(config.location + "/")
 def header():
-    return f.templating.render_template("header.html", location = config.location)
+    return '<script>window.location.replace("/' + config.location + '/main' + '");</script>'
 
 def footer():
     return f.templating.render_template("footer.html")
