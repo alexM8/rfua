@@ -4,7 +4,6 @@
     <list default="true" id="fd4fc6f7-8d4e-43fd-84db-8cb4a891453e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/header.html" afterPath="$PROJECT_DIR$/templates/header.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,8 +18,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+            <state relative-caret-position="270">
+              <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
               <folding>
                 <element signature="e#23#42#0" expanded="true" />
               </folding>
@@ -294,13 +293,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1498489606521</updated>
-    </task>
-    <task id="LOCAL-00004" summary="table formation shorter">
-      <created>1498491958929</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1498491958929</updated>
     </task>
     <task id="LOCAL-00005" summary="Trying to format datestrings">
       <created>1498493134793</created>
@@ -638,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499788703640</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="Try fixin extra array">
+      <created>1499788889317</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1499788889317</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -680,7 +679,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="table formation shorter" />
     <MESSAGE value="Trying to format datestrings" />
     <MESSAGE value="Started working on fields pretty formatting" />
     <MESSAGE value="Fixed a bug with token expiration" />
@@ -705,7 +703,8 @@
     <MESSAGE value="Table names fixes" />
     <MESSAGE value="Final" />
     <MESSAGE value="some optimization" />
-    <option name="LAST_COMMIT_MESSAGE" value="some optimization" />
+    <MESSAGE value="Try fixin extra array" />
+    <option name="LAST_COMMIT_MESSAGE" value="Try fixin extra array" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1137,8 +1136,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+        <state relative-caret-position="270">
+          <caret line="18" column="63" lean-forward="false" selection-start-line="18" selection-start-column="63" selection-end-line="18" selection-end-column="63" />
           <folding>
             <element signature="e#23#42#0" expanded="true" />
           </folding>

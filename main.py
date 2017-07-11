@@ -16,7 +16,7 @@ def footer():
 @app.route(config.location + "/main")
 def main():
     return header() + \
-        f.templating.render_template("big.html", amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100) +\
+        f.templating.render_template("big.html", amount = 'UAH {:,.2f}'.format(api.session.Cards.json()['Result'][0]['AvailableBalance'])) +\
         footer()
 
 @app.route(config.location + "/details")
