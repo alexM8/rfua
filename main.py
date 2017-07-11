@@ -84,7 +84,7 @@ def client():
     info.append(InfoDict)
 
     result = header() + \
-             render_template("body.html", table=FormTable(info, "success"), table_name="Information") + footer()
+             render_template("body.html", table=FormTable(info, "success"), table_name="Client") + footer()
     return result
 
 @app.route(config.location + "/refresh")
