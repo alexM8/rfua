@@ -100,3 +100,6 @@ ENV/
 
 # the file with credentials for rfua_api
 rfua_api/credentials.py
+
+# IDE files
+.idea/
