@@ -16,7 +16,7 @@ def footer():
 @app.route(config.location + "/main")
 def main():
     amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
-    return header() + f.templating.render_template("big.html", amount = 'UAH {:,.2f}'.format(amount)) + footer()
+    return header() + f.templating.render_template("big.html", amount = '{:,.2f} UAH'.format(amount)) + footer()
 
 @app.route(config.location + "/details")
 def details():
@@ -25,17 +25,17 @@ def details():
     HistoryDict = api.session.History.json()['Result']['Items']
 
     for x in range(0, len(HistoryDict)):
-        HistoryDict[x]['OriginalAmount'] = 'UAH {:,.2f}'.format(HistoryDict[x]['OriginalAmount'] / 100)
+        HistoryDict[x]['OriginalAmount'] = '{:,.2f} UAH'.format(HistoryDict[x]['OriginalAmount'] / 100)
         Extrafields = "OperationUniqueKey", "ChannelType"
         for field in Extrafields:
             del HistoryDict[x][field]
 
     for x in range(0, len(HoldsDict)):
-        HoldsDict[x]['Amount'] = 'UAH {:,.2f}'.format(HoldsDict[x]['Amount'] / 100)
+        HoldsDict[x]['Amount'] = '{:,.2f} UAH'.format(HoldsDict[x]['Amount'] / 100)
         del HoldsDict[x]["HoldUniqueKey"]
 
     for x in range(0, len(CardsDict)):
-        CardsDict[x]['AvailableBalance'] = 'UAH {:,.2f}'.format(CardsDict[x]['AvailableBalance'] / 100)
+        CardsDict[x]['AvailableBalance'] = '{:,.2f} UAH'.format(CardsDict[x]['AvailableBalance'] / 100)
         Extrafields = "ProductAlias", "UniqueKey"
         for field in Extrafields:
             del CardsDict[x][field]
