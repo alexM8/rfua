@@ -25,17 +25,17 @@ def details():
     HistoryDict = api.session.History.json()['Result']['Items']
 
     for x in range(0, len(HistoryDict)):
-        'UAH {:,.2f}'.format(HistoryDict[x]['OriginalAmount'] / 100)
+        HistoryDict[x]['OriginalAmount'] = 'UAH {:,.2f}'.format(HistoryDict[x]['OriginalAmount'] / 100)
         Extrafields = "OperationUniqueKey", "ChannelType"
         for field in Extrafields:
             del HistoryDict[x][field]
 
     for x in range(0, len(HoldsDict)):
-        'UAH {:,.2f}'.format(HoldsDict[x]['Amount'] / 100)
+        HoldsDict[x]['Amount'] = 'UAH {:,.2f}'.format(HoldsDict[x]['Amount'] / 100)
         del HoldsDict[x]["HoldUniqueKey"]
 
     for x in range(0, len(CardsDict)):
-        'UAH {:,.2f}'.format(CardsDict[x]['AvailableBalance'] / 100)
+        CardsDict[x]['AvailableBalance'] = 'UAH {:,.2f}'.format(CardsDict[x]['AvailableBalance'] / 100)
         Extrafields = "ProductAlias", "UniqueKey"
         for field in Extrafields:
             del CardsDict[x][field]
