@@ -20,6 +20,12 @@ def header():
 def footer():
     return render_template("footer.html")
 
+@app.route(config.location + "/main")
+def main():
+    return header() +\
+           render_template("big.html", amount = session.Cards.json()['Result'][0]['AvailableBalance']) +\
+           footer()
+
 def FormTable(dict, header_colour = "active", result = ''):
     for card in range(0, len(dict)):
         for element in dict[0].items():
@@ -37,7 +43,7 @@ def FormTable(dict, header_colour = "active", result = ''):
     return result
 
 @app.route(config.location + "/money")
-def money():
+def details():
     CardsDict = session.Cards.json()['Result']
     HoldsDict = session.Holds.json()['Result']['Items']
     HistoryDict = session.History.json()['Result']['Items']
