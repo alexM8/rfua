@@ -53,7 +53,7 @@ def accounts():
     for field in Extrafields:
         del AccountsDict[field]
 
-    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success"), name = "Accounts") + footer()
+    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success", name = "Accounts")) + footer()
     return result
 
 @app.route(config.location + "/cards")
