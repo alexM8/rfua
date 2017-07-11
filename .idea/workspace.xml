@@ -294,13 +294,6 @@
       <option name="presentableId" value="Default" />
       <updated>1498489606521</updated>
     </task>
-    <task id="LOCAL-00005" summary="Trying to format datestrings">
-      <created>1498493134793</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1498493134793</updated>
-    </task>
     <task id="LOCAL-00006" summary="Trying to format datestrings">
       <created>1498493375449</created>
       <option name="number" value="00006" />
@@ -637,7 +630,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499788889317</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Money amount fixes">
+      <created>1499789552215</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1499789552215</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -679,7 +679,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Trying to format datestrings" />
     <MESSAGE value="Started working on fields pretty formatting" />
     <MESSAGE value="Fixed a bug with token expiration" />
     <MESSAGE value="Fixed readme" />
@@ -704,7 +703,8 @@
     <MESSAGE value="Final" />
     <MESSAGE value="some optimization" />
     <MESSAGE value="Try fixin extra array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Try fixin extra array" />
+    <MESSAGE value="Money amount fixes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Money amount fixes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
