@@ -24,8 +24,8 @@ def header():
     return render_template("header.html", location = config.location,
                            username = session.Info.json()['Result']['clientData']['Name'])
 
-def FormTable(dict, header_colour = "active", result = ''):
-    result += "<h1> AccList </h1>"
+def FormTable(dict, header_colour = "active", result = '', name = None):
+    result += "<h2>" + name + "</h2>"
     for card in range(0, len(dict)):
         for element in dict[0].items():
             result += "<th class = \"" + header_colour + "\">" + str(element[0]) + "</th>"
@@ -53,7 +53,7 @@ def accounts():
     for field in Extrafields:
         del AccountsDict[field]
 
-    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success")) + footer()
+    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success"), name = "Accounts") + footer()
     return result
 
 @app.route(config.location + "/cards")
