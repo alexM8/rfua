@@ -13,7 +13,6 @@ class RFSession():
     def __init__(self):
         self.LogIn()
         self.refreshCards()
-        self.refreshAccounts()
         self.refreshHistory()
         self.refreshHolds()
 
@@ -40,14 +39,6 @@ class RFSession():
                 self.params = {"uniqueKey": self.Cards.json()["Result"][0]['UniqueKey']}
                 return True
         raise Exception('Cards Fetching Failed')
-
-    def refreshAccounts(self):
-        for i in range(0, config.Timeout):
-            self.Accounts = self.Request('get', config.Url + "DebitCardAccountData",
-                                               cookies = self.cookies, params = self.params)
-            if validation.CheckForVaidResponse(self.Accounts):
-                return True
-        raise Exception('Accounts Fetching Failed')
 
     def refreshHolds(self):
         for i in range(0, config.Timeout):
