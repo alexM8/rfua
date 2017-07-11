@@ -11,15 +11,11 @@ from ..functions import validation
 
 class RFSession():
     def __init__(self):
-        try:
-            self.LogIn()
-            self.refreshCards()
-            self.refreshAccounts()
-            self.refreshHistory()
-            self.refreshHolds()
-        except:
-            print("Initialization failed")
-            print(Exception)
+        self.LogIn()
+        self.refreshCards()
+        self.refreshAccounts()
+        self.refreshHistory()
+        self.refreshHolds()
 
     def Request(self, type, url, cookies = None, params = None, data = json.dumps(credentials.string)):
         if type == 'post':

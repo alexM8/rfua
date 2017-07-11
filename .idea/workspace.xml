@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd4fc6f7-8d4e-43fd-84db-8cb4a891453e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/footer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rfua_api/classes/RFSession.py" afterPath="$PROJECT_DIR$/rfua_api/classes/RFSession.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/body.html" afterPath="$PROJECT_DIR$/templates/body.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,11 +15,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+            <state relative-caret-position="765">
+              <caret line="51" column="116" lean-forward="true" selection-start-line="51" selection-start-column="116" selection-end-line="51" selection-end-column="116" />
               <folding>
                 <element signature="e#23#59#0" expanded="true" />
               </folding>
@@ -50,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RFSession.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RFSession.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rfua_api/classes/RFSession.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="568">
-              <caret line="50" column="74" lean-forward="true" selection-start-line="50" selection-start-column="74" selection-end-line="50" selection-end-column="74" />
+            <state relative-caret-position="288">
+              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding>
                 <element signature="e#155#176#0" expanded="true" />
               </folding>
@@ -124,10 +121,10 @@
         <option value="$PROJECT_DIR$/rfua_api/functions/validation.py" />
         <option value="$PROJECT_DIR$/rfua_api/functions/logger.py" />
         <option value="$PROJECT_DIR$/rfua_api/functions/request.py" />
-        <option value="$PROJECT_DIR$/rfua_api/classes/RFSession.py" />
         <option value="$PROJECT_DIR$/templates/body.html" />
         <option value="$PROJECT_DIR$/templates/footer.html" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/rfua_api/classes/RFSession.py" />
       </list>
     </option>
   </component>
@@ -483,7 +480,14 @@
       <option name="project" value="LOCAL" />
       <updated>1499779502419</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Added empty footer">
+      <created>1499780141151</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1499780141151</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -529,7 +533,8 @@
     <MESSAGE value="still fixin' bugs" />
     <MESSAGE value="Another fix try" />
     <MESSAGE value="config update" />
-    <option name="LAST_COMMIT_MESSAGE" value="config update" />
+    <MESSAGE value="Added empty footer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added empty footer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -939,16 +944,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rfua_api/classes/RFSession.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="50" column="74" lean-forward="true" selection-start-line="50" selection-start-column="74" selection-end-line="50" selection-end-column="74" />
-          <folding>
-            <element signature="e#155#176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -967,10 +962,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="39" lean-forward="false" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        <state relative-caret-position="765">
+          <caret line="51" column="116" lean-forward="true" selection-start-line="51" selection-start-column="116" selection-end-line="51" selection-end-column="116" />
           <folding>
             <element signature="e#23#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rfua_api/classes/RFSession.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="e#155#176#0" expanded="true" />
           </folding>
         </state>
       </provider>
