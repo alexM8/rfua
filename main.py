@@ -23,7 +23,7 @@ def footer():
 @app.route(config.location + "/main")
 def main():
     return header() +\
-           render_template("big.html", amount = session.Cards.json()['Result'][0]['AvailableBalance']) +\
+           render_template("big.html", amount = session.Cards.json()['Result'][0]['AvailableBalance'] / 100) +\
            footer()
 
 def FormTable(dict, header_colour = "active", result = ''):
@@ -42,7 +42,7 @@ def FormTable(dict, header_colour = "active", result = ''):
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
     return result
 
-@app.route(config.location + "/money")
+@app.route(config.location + "/details")
 def details():
     CardsDict = session.Cards.json()['Result']
     HoldsDict = session.Holds.json()['Result']['Items']
