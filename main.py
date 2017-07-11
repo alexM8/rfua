@@ -17,11 +17,15 @@ def favicon():
 def root():
     return header()
 
+def footer():
+    return render_template("footer.html")
+
 def header():
     return render_template("header.html", location = config.location,
                            username = session.Info.json()['Result']['clientData']['Name'])
 
 def FormTable(dict, header_colour = "active", result = ''):
+    result += ""
     for card in range(0, len(dict)):
         for element in dict[0].items():
             result += "<th class = \"" + header_colour + "\">" + str(element[0]) + "</th>"
@@ -49,7 +53,7 @@ def accounts():
     for field in Extrafields:
         del AccountsDict[field]
 
-    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success"))
+    result = header() + render_template("body.html", table = FormTable([AccountsDict], "success")) + footer()
     return result
 
 @app.route(config.location + "/cards")
@@ -62,7 +66,7 @@ def cards():
         for field in Extrafields:
             del CardsDict[x][field]
 
-    return header() + render_template("body.html", table = FormTable(CardsDict, "success"))
+    return header() + render_template("body.html", table = FormTable(CardsDict, "success")) + footer()
 
 @app.route(config.location + "/holds")
 def holds():
@@ -72,7 +76,7 @@ def holds():
         HoldsDict[x]['Amount'] /= 100
         del HoldsDict[x]["HoldUniqueKey"]
 
-    return header() + render_template("body.html", table = FormTable(HoldsDict, "success"))
+    return header() + render_template("body.html", table = FormTable(HoldsDict, "success")) + footer()
 
 @app.route(config.location + "/history")
 def history():
@@ -84,7 +88,7 @@ def history():
         for field in Extrafields:
             del HistoryDict[x][field]
 
-    return header() + render_template("body.html", table = FormTable(HistoryDict, "success"))
+    return header() + render_template("body.html", table = FormTable(HistoryDict, "success")) + footer()
 
 @app.route(config.location + "/refresh")
 def refresh():
@@ -101,13 +105,13 @@ def refresh():
 @app.route(config.location + "/log")
 def log():
     Log = json.loads(json.dumps(logger.getLog(), sort_keys = True))
-    return header() + render_template("body.html", table = FormTable(Log, "danger"))
+    return header() + render_template("body.html", table = FormTable(Log, "danger")) + footer()
 
 @app.route(config.location + "/devices")
 def devices():
     DevicesDict = session.Info.json()['Result']['clientData']['subscriptions']
 
-    return header() + render_template("body.html", table = FormTable(DevicesDict, "success"))
+    return header() + render_template("body.html", table = FormTable(DevicesDict, "success")) + footer()
 
 @app.route(config.location + "/info")
 def info():
@@ -121,4 +125,4 @@ def info():
     info = []
     info.append(InfoDict)
 
-    return header() + render_template("body.html", table = FormTable(info, "success"))
+    return header() + render_template("body.html", table = FormTable(info, "success")) + footer()
