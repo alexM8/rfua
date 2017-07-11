@@ -6,7 +6,7 @@ That's why every request has for loop with retry count
 '''
 import requests, json
 from .. import config, credentials
-from ..functions import validation
+from .. import validation
 
 
 class RFSession():
