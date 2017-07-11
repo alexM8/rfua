@@ -49,18 +49,15 @@ def details():
 
 @app.route(config.location + "/client")
 def client():
-    InfoDict = api.session.Info.json()['Result']['clientData']
+    InfoDict = [api.session.Info.json()['Result']['clientData']]
 
     ExtraFields = "ResidentialStatus", "FunctionPackage", "ChannelStatus", \
                   "subscriptions", "AuthenticationToken", "Birthday",
     for fields in ExtraFields:
-        del InfoDict[fields]
-
-    info = []
-    info.append(InfoDict)
+        del InfoDict[0][fields]
 
     return header() + \
-             f.templating.render_template("body.html", table=FormTable(info, "success"), table_name="Client") + footer()
+             f.templating.render_template("body.html", table=FormTable(InfoDict, "success"), table_name="Client") + footer()
 
 @app.route(config.location + "/refresh")
 def refresh():
@@ -77,8 +74,3 @@ def refresh():
 def log():
     Log = json.loads(json.dumps(logger.getLog(), sort_keys = True))
     return header() + f.templating.render_template("body.html", table = FormTable(Log, "danger")) + footer()
-
-@app.route(config.location + "/devices")
-def devices():
-    DevicesDict = api.session.Info.json()['Result']['clientData']['subscriptions']
-    return header() + f.templating.render_template("body.html", table = FormTable(DevicesDict, "success")) + footer()
