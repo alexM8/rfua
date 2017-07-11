@@ -3,23 +3,22 @@ from flask import Flask, current_app
 from flask.templating import render_template
 from rfua_api.main import *
 from rfua_api.functions import logger
-from config import location
 import config
 from dateutil.parser import parse
 import json
 
 app = Flask(__name__)
 
-@app.route(location + "/favicon.ico")
+@app.route(config.location + "/favicon.ico")
 def favicon():
     return current_app.send_static_file("favicon.ico")
 
-@app.route(location + "/")
+@app.route(config.location + "/")
 def root():
     return header()
 
 def header():
-    return render_template("header.html", location = location,
+    return render_template("header.html", location = config.location,
                            username = session.Info.json()['Result']['clientData']['Name'])
 
 def FormTable(dict, header_colour = "active", result = ''):
@@ -38,7 +37,7 @@ def FormTable(dict, header_colour = "active", result = ''):
     result = "<table class = \"table table-bordered\"><tr class = \"" + header_colour + "\">" + result + "</tr></table>"
     return result
 
-@app.route(location + "/accounts")
+@app.route(config.location + "/accounts")
 def accounts():
     AccountsDict = session.Accounts.json()['Result']
 
@@ -53,7 +52,7 @@ def accounts():
     result = header() + render_template("body.html", table = FormTable([AccountsDict], "success"))
     return result
 
-@app.route(location + "/cards")
+@app.route(config.location + "/cards")
 def cards():
     CardsDict = session.Cards.json()['Result']
 
@@ -65,7 +64,7 @@ def cards():
 
     return header() + render_template("body.html", table = FormTable(CardsDict, "success"))
 
-@app.route(location + "/holds")
+@app.route(config.location + "/holds")
 def holds():
     HoldsDict = session.Holds.json()['Result']['Items']
 
@@ -75,7 +74,7 @@ def holds():
 
     return header() + render_template("body.html", table = FormTable(HoldsDict, "success"))
 
-@app.route(location + "/history")
+@app.route(config.location + "/history")
 def history():
     HistoryDict = session.History.json()['Result']['Items']
 
@@ -87,7 +86,7 @@ def history():
 
     return header() + render_template("body.html", table = FormTable(HistoryDict, "success"))
 
-@app.route(location + "/refresh")
+@app.route(config.location + "/refresh")
 def refresh():
     try:
         session.refreshHistory()
@@ -99,18 +98,18 @@ def refresh():
         session.__init__()
         return "<script> window.history.back(); </script>"
 
-@app.route(location + "/log")
+@app.route(config.location + "/log")
 def log():
     Log = json.loads(json.dumps(logger.getLog(), sort_keys = True))
     return header() + render_template("body.html", table = FormTable(Log, "danger"))
 
-@app.route(location + "/devices")
+@app.route(config.location + "/devices")
 def devices():
     DevicesDict = session.Info.json()['Result']['clientData']['subscriptions']
 
     return header() + render_template("body.html", table = FormTable(DevicesDict, "success"))
 
-@app.route(location + "/info")
+@app.route(config.location + "/info")
 def info():
     InfoDict = session.Info.json()['Result']['clientData']
 
