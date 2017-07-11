@@ -2,7 +2,7 @@
 import json
 import flask as f
 from rfua_api import logger, api
-from . import config
+import config
 from table import FormTable
 
 app = f.Flask(__name__)
