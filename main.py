@@ -25,7 +25,7 @@ def header():
                            username = session.Info.json()['Result']['clientData']['Name'])
 
 def FormTable(dict, header_colour = "active", result = ''):
-    result += ""
+    result += "<h1> AccList </h1>"
     for card in range(0, len(dict)):
         for element in dict[0].items():
             result += "<th class = \"" + header_colour + "\">" + str(element[0]) + "</th>"
