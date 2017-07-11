@@ -1,4 +1,4 @@
-from . import config
+import config
 from dateutil.parser import parse
 
 def FormTable(dict, header_colour = "active", result = ''):
