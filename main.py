@@ -77,11 +77,11 @@ def main():
         del AccountsDict[field]
 
     result = header() + \
-             render_template("body.html", table = FormTable(info, "success")) + \
-             render_template("body.html", table = FormTable([AccountsDict], "success")) + \
-             render_template("body.html", table = FormTable(CardsDict, "success")) + \
-             render_template("body.html", table = FormTable(HoldsDict, "success")) + \
-             render_template("body.html", table = FormTable(HistoryDict, "success")) + \
+             render_template("body.html", table = FormTable(info, "success"), table_name = "Information") + \
+             render_template("body.html", table = FormTable([AccountsDict], "success"), table_name = "Accounts") + \
+             render_template("body.html", table = FormTable(CardsDict, "success"), table_name = "Cards") + \
+             render_template("body.html", table = FormTable(HoldsDict, "success"), table_name = "Holds") + \
+             render_template("body.html", table = FormTable(HistoryDict, "success"), table_name = "History") + \
              footer()
     return result
 
