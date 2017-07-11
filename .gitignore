@@ -102,4 +102,4 @@ ENV/
 rfua_api/credentials.py
 
 # IDE files
-.idea/*
+.idea/
