@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-import json
+import json, config
 import flask as f
 from rfua_api import logger, api
-import config
 from table import FormTable
 
 app = f.Flask(__name__)
@@ -42,12 +41,11 @@ def details():
         for field in Extrafields:
             del CardsDict[x][field]
 
-    result = header() + \
+    return header() + \
         f.templating.render_template("body.html", table = FormTable(CardsDict, "success"), table_name = "Cards") + \
         f.templating.render_template("body.html", table = FormTable(HoldsDict, "success"), table_name = "Holds") + \
         f.templating.render_template("body.html", table = FormTable(HistoryDict, "success"), table_name = "History") + \
         footer()
-    return result
 
 @app.route(config.location + "/client")
 def client():
@@ -61,9 +59,8 @@ def client():
     info = []
     info.append(InfoDict)
 
-    result = header() + \
+    return header() + \
              f.templating.render_template("body.html", table=FormTable(info, "success"), table_name="Client") + footer()
-    return result
 
 @app.route(config.location + "/refresh")
 def refresh():
