@@ -6,14 +6,17 @@ from table import FormTable
 
 app = f.Flask(__name__)
 
-@app.route(config.location + "/")
+# @app.route(config.location + "/")
+# def header():
+#     return '<a href="' + config.location + '/main' + '"></a>'
+
 def header():
-    return '<a href="' + config.location + '/main' + '"></a>'
+    return f.templating.render_template("header.html", location = config.location)
 
 def footer():
     return f.templating.render_template("footer.html")
 
-@app.route(config.location + "/main")
+@app.route(config.location + "/")
 def main():
     amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
     return header() + f.templating.render_template("big.html", amount = '{:,.2f} UAH'.format(amount)) + footer()
