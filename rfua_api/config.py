@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import uuid, json
+import uuid
+import json
 
 ClientDetails = {'ApplicationVersion': 'Version 291',
-                 'CallId': str(uuid.uuid4()), # Random value in uuid format
+                 'CallId': str(uuid.uuid4()),  # Random value in uuid format
                  'ClientIP': '192.168.0.1',
                  'ClientIMEI': '7F2CA69D-9730-48DE-8E78-8F564356DB07',
                  'ClientMAC': '',
