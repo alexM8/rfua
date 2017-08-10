@@ -7,13 +7,14 @@ https://online.aval.ua/bfo/channel/web/loginframe.jsp
 ![alt text](screenshots/rfua.png)
 
 # How To Use
+0. This project requires ```python3``` to run.
 1. Create file `credentials.py` in ```rfua_api``` folder with this content:
 ```python
 string = {"Login":"LOGIN_STRING","Password":"PASSWORD_STRING"}
 ```
 2. The project is build on flask framework. If you don't have it, install via ```pip3 install flask```.
 3. Run ```FLASK_APP=main.py flask run --host=0.0.0.0``` in root folder
-4. Go to ```http://localhost:5000``` in your web browser
+4. Go to ```http://localhost:5000/rfsn``` in your web browser
 
 # How API Works
 1. Launch ```python3``` shell in root and issue
