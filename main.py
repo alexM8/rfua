@@ -41,8 +41,8 @@ def details():
         del holds_dict[x]["HoldUniqueKey"]
 
     for x in range(0, len(cards_dict)):
-        cards_dict[x]['AvailableBalance'] = '{:,.2f} UAH'.format(cards_dict[x]['AvailableBalance'] / 100)
-        extra_fields = "ProductAlias", "UniqueKey"
+        # cards_dict[x]['AvailableBalance'] = '{:,.2f} UAH'.format(cards_dict[x]['AvailableBalance'] / 100)
+        extra_fields = "ProductAlias", "UniqueKey", "AvailableBalance"
         for field in extra_fields:
             del cards_dict[x][field]
 
