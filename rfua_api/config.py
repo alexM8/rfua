@@ -19,4 +19,4 @@ Headers = {'Host': 'phoenix.aval.ua',
            }
 Url = 'https://online.aval.ua:444/iphone/en/Account/'
 LoginUrl = 'https://online.aval.ua:444/iphone/en/Security/'
-Timeout = 9
+Timeout = 8
