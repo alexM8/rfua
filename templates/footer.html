@@ -1,2 +1,15 @@
 </body>
+<script>
+  $(".spoiler-trigger").click(function() {
+		$(this).parent().next().collapse('toggle');
+	});
+</script>
+<style>
+  .container {
+  margin-top: 10px;
+  }
+  .panel {
+  box-shadow: none !important;
+  }
+</style>
 </html>
