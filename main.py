@@ -11,7 +11,8 @@ app = f.Flask(__name__)
 
 def header():
     amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
-    return f.templating.render_template("header.html", amount='{:,.2f} UAH'.format(amount)) + footer()
+    return f.templating.render_template("header.html", amount='{:,.2f} UAH'.format(amount), location=config.location)\
+           + footer()
 
 
 def footer():
