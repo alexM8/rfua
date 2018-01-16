@@ -1,4 +1,10 @@
 <center><h1>{{amount | safe}}</h1></center>
+
+<script>
+  $(".spoiler-trigger").click(function() {
+		$(this).parent().next().collapse('toggle');
+	});
+</script>
   <div class="panel panel-default">
     <div class="panel-heading">
       <button type="button" class="btn btn-default btn-xs spoiler-trigger" data-toggle="collapse">Toggle Button</button>
