@@ -10,13 +10,16 @@ app = f.Flask(__name__)
 
 
 def header():
-    amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
-    return f.templating.render_template("header.html", amount='{:,.2f} UAH'.format(amount), location=config.location)\
-           + footer()
+    return f.templating.render_template("header.html", location=config.location) + footer()
 
 
 def footer():
     return f.templating.render_template("footer.html")
+
+
+def current():
+    amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
+    return f.templating.render_template("current.html", amount='{:,.2f} UAH'.format(amount))
 
 
 @app.route(config.location + "/")
@@ -31,7 +34,7 @@ def details():
     history_dict = api.session.History.json()['Result']['Items']
 
     for x in range(0, len(history_dict)):
-        history_dict[x]['OriginalAmount'] = '{:,.2f} UAH'.format(history_dict[x]['OriginalAmount'] / 100)
+        history_dict[x]['OriginalAmount'] = '{:,.2f}'.format(history_dict[x]['OriginalAmount'] / 100)
         extra_fields = "OperationUniqueKey", "ChannelType"
         for field in extra_fields:
             del history_dict[x][field]
@@ -47,9 +50,9 @@ def details():
             del cards_dict[x][field]
 
     return header() + \
-        f.templating.render_template("body.html", table=form_table(cards_dict, "success"), table_name="Cards") + \
-           f.templating.render_template("body.html", table=form_table(holds_dict, "success"), table_name="Holds") + \
-           f.templating.render_template("body.html", table=form_table(history_dict, "success"), table_name="History") + \
+        f.templating.render_template("table.html", table=form_table(cards_dict, "success"), table_name="Cards") + \
+           f.templating.render_template("table.html", table=form_table(holds_dict, "success"), table_name="Holds") + \
+           f.templating.render_template("table.html", table=form_table(history_dict, "success"), table_name="History") + \
            footer()
 
 
@@ -63,7 +66,7 @@ def client():
         del info_dict[0][fields]
 
     return header() + \
-        f.templating.render_template("body.html", table=form_table(info_dict, "success"), table_name="Client") + \
+        f.templating.render_template("table.html", table=form_table(info_dict, "success"), table_name="Client") + \
            footer()
 
 
@@ -83,4 +86,4 @@ def refresh():
 @app.route(config.location + "/log")
 def logfile():
     log = json.loads(json.dumps(logger.get_log(), sort_keys=True))
-    return header() + f.templating.render_template("body.html", table=form_table(log, "danger")) + footer()
+    return header() + f.templating.render_template("table.html", table=form_table(log, "danger")) + footer()
