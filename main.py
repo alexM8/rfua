@@ -20,7 +20,7 @@ def footer():
 
 @app.route(config.location + "/")
 def main():
-    return header() + f.templating.render_template("big.html", amount='{:,.2f} UAH'.format(amount)) + footer()
+    return header() + footer()
 
 
 @app.route(config.location + "/details")
