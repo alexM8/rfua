@@ -29,6 +29,7 @@ def main():
 
 @app.route(config.location + "/details")
 def details():
+    amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
     cards_dict = api.session.Cards.json()['Result']
     holds_dict = api.session.Holds.json()['Result']['Items']
     history_dict = api.session.History.json()['Result']['Items']
@@ -40,7 +41,7 @@ def details():
             del history_dict[x][field]
 
     for x in range(0, len(holds_dict)):
-        holds_dict[x]['Amount'] = '{:,.2f} UAH'.format(holds_dict[x]['Amount'] / 100)
+        holds_dict[x]['Amount'] = '{:,.2f}'.format(holds_dict[x]['Amount'] / 100)
         del holds_dict[x]["HoldUniqueKey"]
 
     for x in range(0, len(cards_dict)):
@@ -50,10 +51,11 @@ def details():
             del cards_dict[x][field]
 
     return header() + \
-        f.templating.render_template("table.html", table=form_table(cards_dict, "success"), table_name="Cards") + \
-           f.templating.render_template("table.html", table=form_table(holds_dict, "success"), table_name="Holds") + \
-           f.templating.render_template("table.html", table=form_table(history_dict, "success"), table_name="History") + \
-           footer()
+        f.templating.render_template("current.html", amount='{:,.2f} UAH'.format(amount)) + \
+            f.templating.render_template("table.html", table=form_table(cards_dict, "success"), table_name="Cards") + \
+            f.templating.render_template("table.html", table=form_table(holds_dict, "success"), table_name="Holds") + \
+            f.templating.render_template("table.html", table=form_table(history_dict, "success"), table_name="History") + \
+            footer()
 
 
 @app.route(config.location + "/client")
