@@ -17,17 +17,7 @@ def footer():
     return f.templating.render_template("footer.html")
 
 
-def current():
-    amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
-    return f.templating.render_template("current.html", amount='{:,.2f} UAH'.format(amount))
-
-
 @app.route(config.location + "/")
-def main():
-    return header() + footer()
-
-
-@app.route(config.location + "/details")
 def details():
     amount = api.session.Cards.json()['Result'][0]['AvailableBalance'] / 100
     cards_dict = api.session.Cards.json()['Result']
@@ -45,7 +35,6 @@ def details():
         del holds_dict[x]["HoldUniqueKey"]
 
     for x in range(0, len(cards_dict)):
-        # cards_dict[x]['AvailableBalance'] = '{:,.2f} UAH'.format(cards_dict[x]['AvailableBalance'] / 100)
         extra_fields = "ProductAlias", "UniqueKey", "AvailableBalance"
         for field in extra_fields:
             del cards_dict[x][field]
