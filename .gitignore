@@ -103,3 +103,6 @@ rfua_api/credentials.py
 
 # IDE files
 .idea/
+
+# Mac OS Specifix
+.DS_Store
