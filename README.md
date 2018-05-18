@@ -1,4 +1,7 @@
-# What Is This
+# Deprecated update
+Unfortunately, Raiffeisen Bank UA discontinued the iOS application API since May 2018. They're going to release new app soon, and I think that their new API will be compatible with this code.
+
+## What Is This
 - This is a web client for Raiffaisen Bank UA.
 - It was reverse-engineered from an iPhone application.
 
@@ -6,7 +9,7 @@ https://online.aval.ua/bfo/channel/web/loginframe.jsp
 
 ![alt text](screenshots/rfua.png)
 
-# How To Use
+## How To Use
 0. This project requires ```python3``` to run.
 1. Create file `credentials.py` in ```rfua_api``` folder with this content:
 ```python
@@ -16,7 +19,7 @@ string = {"Login":"LOGIN_STRING","Password":"PASSWORD_STRING"}
 3. Run ```FLASK_APP=main.py flask run --host=0.0.0.0``` in root folder
 4. Go to ```http://localhost:5000/rfsn``` in your web browser
 
-# How API Works
+## How API Works
 1. Launch ```python3``` shell in root and issue
 ```
 import rfua_api.main as api
@@ -31,7 +34,7 @@ import rfua_api.main as api
 	- main.session.History
 5. When the object is deleted, destructor method performs logoff
 
-# Other Info
+## Other Info
 The API interface at ```online.aval.ua``` is very unstable.
 
 That's why every request is performed in a loop with timeout counter.
