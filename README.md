@@ -1,4 +1,4 @@
-# Deprecated update
+# Deprecation warning
 Unfortunately, Raiffeisen Bank UA discontinued the iOS application API since May 2018. They're going to release new app soon, and I think that their new API will be compatible with this code.
 
 ## What Is This
